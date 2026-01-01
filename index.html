@@ -3,317 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usman Nizam ul Din | Portfolio</title>
+    <title>Usman Nizam Ul Din | Portfolio</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --white: #ffffff;
+            --primary-dark: #0f2027;
+            --accent-green: #38ef7d;
             --grad-header: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            --grad-skill: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-            --grad-btn: linear-gradient(45deg, #1FA2FF 0%, #12D8FA 50%, #A6FFCB 100%);
+            --grad-card: linear-gradient(145deg, #ffffff, #f0f2f5);
+            --grad-glow: linear-gradient(45deg, #11998e, #38ef7d);
+            --grad-btn: linear-gradient(45deg, #1FA2FF, #12D8FA);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #f0f2f5;
+            background-color: #f4f7f6;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* --- HEADER --- */
         header {
             background: var(--grad-header);
-            color: var(--white);
+            color: white;
             text-align: center;
-            padding: 4rem 1.5rem 5rem;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
+            padding: 5rem 1.5rem 6rem;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            position: relative;
         }
 
         .profile-img {
-            width: 170px;
-            height: 170px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-            margin-bottom: 1rem;
-            background-color: #ddd;
+            border: 4px solid #38ef7d;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .availability-badge {
+            background: #38ef7d;
+            color: #0f2027;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(56, 239, 125, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(56, 239, 125, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 239, 125, 0); }
         }
 
         header h1 {
-            margin: 10px 0 5px;
-            font-size: 2.2rem;
-            font-weight: 800;
+            margin: 0;
+            font-size: 2.5rem;
+            background: -webkit-linear-gradient(#fff, #a1ffce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .titles {
-            font-size: 1.1rem;
-            color: #dcdcdc;
-            font-weight: 400;
-        }
-
-        /* --- SOCIAL BAR --- */
-        .social-bar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .social-btn {
-            text-decoration: none;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
+        /* --- CONTAINER & SECTIONS --- */
         .container {
-            max-width: 1000px;
-            margin: -40px auto 0;
-            padding: 0 1.5rem 3rem;
-            position: relative;
-            z-index: 2;
+            max-width: 1050px;
+            margin: -50px auto 0;
+            padding: 0 20px 50px;
         }
 
         section {
-            background: var(--white);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            background: white;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         h2 {
-            color: var(--primary);
-            border-left: 6px solid #11998e;
-            padding-left: 15px;
-            margin-top: 0;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: var(--grad-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            border-bottom: 3px solid #38ef7d;
         }
 
-        /* --- EXPERIENCE --- */
-        .exp-item {
-            border-left: 3px solid #ddd;
-            padding-left: 20px;
-            margin-bottom: 25px;
-            position: relative;
+        /* --- CONTACT FORM --- */
+        .contact-form {
+            display: grid;
+            gap: 15px;
         }
-        .exp-item::before {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: #11998e;
-            border-radius: 50%;
-            position: absolute;
-            left: -7.5px;
-            top: 5px;
-        }
-        .role { font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
-        .company { color: #555; font-style: italic; font-size: 0.95rem; }
-        .date { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
-
-        /* --- AUTO-SCROLL CAROUSEL --- */
-        .slider-wrapper {
-            overflow: hidden;
-            position: relative;
+        .contact-form input, .contact-form textarea {
             width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
         }
+        .submit-btn {
+            background: var(--grad-glow);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { opacity: 0.9; transform: scale(1.02); }
 
+        /* --- SLIDER --- */
+        .slider-container { overflow: hidden; padding: 20px 0; }
         .slider-track {
             display: flex;
-            width: calc(300px * 21); /* Adjust based on number of items */
-            animation: scroll 60s linear infinite; /* Adjust speed here */
+            gap: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
         }
-        
-        .slide-card {
-            width: 280px;
-            flex-shrink: 0;
-            background: #f8f9fa;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 20px;
-            margin-right: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        @keyframes scroll {
+        .auto-animate { animation: scroll-loop 40s linear infinite; }
+        @keyframes scroll-loop {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-280px * 10)); } /* Moves halfway then loops */
+            100% { transform: translateX(-1500px); }
         }
 
-        .cert-btn {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #333;
-            background: #e0e0e0;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.8rem;
+        .slide-card {
+            min-width: 280px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #11998e;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #0f2027;
+            color: #888;
+            padding: 4rem 2rem 2rem;
             text-align: center;
-            font-weight: bold;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
         }
+        footer h3 { color: white; margin-bottom: 10px; }
+        .footer-links { margin: 20px 0; }
+        .footer-links a { color: #38ef7d; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
 
-        /* --- SKILLS GRID --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-pill {
-            background: #e3f2fd;
-            color: #1565c0;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+        .item-box { padding: 15px 0; border-bottom: 1px solid #eee; }
+        .date-tag { background: #e8fcf1; color: #11998e; padding: 2px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
 
-        /* --- PUBLICATION --- */
-        .doi-link {
-            color: #0f2027;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-decoration: underline;
-        }
-
-        footer { text-align: center; padding: 2rem; color: #777; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="1000215280.jpg" alt="Usman Nizam ul Din" class="profile-img">
-        <h1>Usman Nizam ul Din</h1>
-        <div class="titles">Academic Content Writer | Researcher | Marketing Specialist</div>
-        
-        <div class="social-bar">
-            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn" target="_blank">ResearchGate</a>
-            <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230" class="social-btn" target="_blank">LinkedIn</a>
-            <a href="https://wa.me/923082194489" class="social-btn" target="_blank">WhatsApp</a>
-            <a href="https://www.facebook.com/usman.dhuddi.71" class="social-btn" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/dhuddiofficial" class="social-btn" target="_blank">Instagram</a>
-        </div>
-        <p style="margin-top: 15px; opacity: 0.9;">Bahawalnagar, Punjab, Pakistan</p>
+        <div class="availability-badge">● Available for New Projects</div>
+        <img src="1000215280.jpg" alt="Usman Nizam Ul Din" class="profile-img">
+        <h1>Usman Nizam Ul Din</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">Academic Researcher | Content Specialist | Marketing Expert</p>
     </header>
 
     <div class="container">
 
-        <section id="experience">
-            <h2>Experience</h2>
-            
-            <div class="exp-item">
-                <span class="date">Present</span>
-                <div class="role">Freelance Academic Content Writer</div>
-                <div class="company">Self-Employed / Freelance</div>
-                <p>Specialized in academic thesis writing, research papers, and technical documentation. Proficient in formatting, citation styles, and structuring complex arguments.</p>
-            </div>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am <strong>Usman Nizam Ul Din</strong>, a dedicated researcher and content specialist. I have successfully completed <strong>over 50 academic thesis and research projects</strong>, conducting in-depth surveys and data analysis. I bridge the gap between academic rigor and creative marketing strategy.</p>
+        </section>
 
-            <div class="exp-item">
-                <span class="date">March 2025 - Sept 2025</span>
-                <div class="role">Customer Chat Support</div>
-                <div class="company">Mindbridge Private Limited</div>
-                <p>International campaign support, real-time client resolution, and CRM management.</p>
+        <section id="honors">
+            <h2>Honors, Awards & Activities</h2>
+            <div class="item-box">
+                <span class="date-tag">Jan 2024 - Present</span>
+                <strong>Graphics Designer</strong> | Raghib Al Hidaya Welfare Society
             </div>
-
-            <div class="exp-item">
-                <span class="date">June 2023 - July 2023</span>
-                <div class="role">Sales & Marketing Intern</div>
-                <div class="company">Pak Suzuki Motors</div>
-                <p>Managed social media accounts, organized promotional events, and prepared sales reports.</p>
+            <div class="item-box">
+                <span class="date-tag">Oct 2024 - Present</span>
+                <strong>Vice President</strong> | Zad E Rah Foundation
+            </div>
+            <div class="item-box">
+                <strong>Marketing Leadership</strong>: Organized and managed various marketing events and seminars during my studies to enhance project management skills.
             </div>
         </section>
 
-        <section id="publications">
-            <h2>Publications</h2>
-            <div style="margin-bottom: 20px;">
-                <div class="role">What Drives M-Banking Clients to Continue Using M-Banking Services?</div>
-                <div class="company">Journal of Asian Development Studies (2025)</div>
-                <a href="https://doi.org/10.62345/jads.2025.14.3.91" class="doi-link" target="_blank">DOI: 10.62345/jads.2025.14.3.91</a>
-            </div>
-            <div>
-                <div class="role">The Role of Anthropomorphism in AI: ChatGPT’s Impact</div>
-                <div class="company">Pakistan Journal of Humanities and Social Sciences (2025)</div>
-                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" class="doi-link" target="_blank">DOI: 10.52131/pjhss.2025.v13i2.2808</a>
-            </div>
+        <section id="development">
+            <h2>Professional Development</h2>
+            <div class="item-box">● Marketing Mix Seminar | IUB Bahawalnagar | March 2024</div>
+            <div class="item-box">● Futurepreneurs Management | IUB Bahawalnagar | Nov 2024</div>
+            <div class="item-box">● Sustainable Innovations Summit | IUB Bahawalnagar | Feb 2023</div>
+            <div class="item-box">● SMEDA Financial Strategies | IUB Bahawalnagar | April 2022</div>
         </section>
 
         <section id="certifications">
-            <h2>Certifications (Auto-Scroll)</h2>
-            <div class="slider-wrapper">
-                <div class="slider-track">
-                    <div class="slide-card">
-                        <strong>Supply Chain Planning</strong><small>UC Irvine</small>
-                        <a href="https://coursera.org/verify/KVGJ1GWOKUMA" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Logistics Excellence</strong><small>Rutgers University</small>
-                        <a href="https://coursera.org/verify/AZC8T74V77R4" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Social Media Marketing</strong><small>Meta</small>
-                        <a href="https://coursera.org/verify/BSOAQWHITSXF" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Social Media Management</strong><small>Meta</small>
-                        <a href="https://coursera.org/verify/2W1TSZ4AHOJU" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Advertising with Meta</strong><small>Meta</small>
-                        <a href="https://coursera.org/verify/11KJ0N1X4WSS" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Digital Marketing & E-com</strong><small>Google</small>
-                        <a href="https://coursera.org/verify/KIYJ16S0EX7V" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Google AI Essentials</strong><small>Google</small>
-                        <a href="https://coursera.org/verify/OPARVPC9JGMG" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Marketing Analytics</strong><small>Univ. of Virginia</small>
-                        <a href="https://coursera.org/verify/S2L39LKRAY8X" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Consumer Neuroscience</strong><small>Copenhagen Business School</small>
-                        <a href="https://coursera.org/verify/G7C6NF4CH9ZA" class="cert-btn">Verify</a>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Digiskills: Freelancing</strong><small>Digiskills.pk</small>
-                        <span class="cert-btn">Verifiable on Cert</span>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Digiskills: SEO</strong><small>Digiskills.pk</small>
-                        <span class="cert-btn">Verifiable on Cert</span>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Digiskills: WordPress</strong><small>Digiskills.pk</small>
-                        <span class="cert-btn">Verifiable on Cert</span>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Digiskills: Digital Literacy</strong><small>Digiskills.pk</small>
-                        <span class="cert-btn">Verifiable on Cert</span>
-                    </div>
-                    <div class="slide-card">
-                        <strong>UI/UX Design</strong><small>My Great Learning</small>
-                        <span class="cert-btn">Verifiable on Cert</span>
-                    </div>
-                    <div class="slide-card">
-                        <strong>Attract Customers</strong><small>Google</small>
-                        <a href="
-    
+            <h2>Certifications (Auto & Manual Scroll)</h2>
+            <div class="slider-container" onmouseover="this.querySelector('.slider-track').classList.remove('auto-animate')" onmouseout="this.querySelector('.slider-track').classList.add('auto-animate')">
+                <div class="slider-track auto-animate">
+                    <div class="slide-card"><strong>Digital Marketing</strong><br>Google</div>
+                    <div class="slide-card"><strong>Social Media Marketing</strong><br>Meta</div>
+                    <div class="slide-card"><strong>Google AI Essentials</strong><br>Google</div>
+                    <div class="slide-card"><strong>SEO Specialist</strong><br>Digiskills.pk</div>
+                    <div class="slide-card"><strong>Supply Chain Planning</strong><br>UC Irvine</div>
+                    <div class="slide-card"><strong>Digital Marketing</strong><br>Google</div>
+                    <div class="slide-card"><strong>Social Media Marketing</strong><br>Meta</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Hire Me / Contact</h2>
+            <p>I am currently <strong>available for work</strong>. Whether it's an academic project, research analysis, or marketing strategy, let's connect!</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Project Details" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <h3>Usman Nizam Ul Din</h3>
+        <p>Academic Content Writer | Researcher | Marketing Specialist</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="font-size: 0.8rem;">&copy; 2026 Usman Nizam Ul Din. All Rights Reserved.<br>Bahawalnagar, Punjab, Pakistan</p>
+    </footer>
+
+</body>
+</html>
