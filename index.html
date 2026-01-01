@@ -8,11 +8,9 @@
         :root {
             --primary: #2c3e50;
             --white: #ffffff;
-            /* New Gradient Variables */
-            --grad-header: linear-gradient(135deg, #1A2980 0%, #26D0CE 100%);
-            --grad-card: linear-gradient(to right, #ffffff, #f9f9f9);
-            --grad-skill: linear-gradient(90deg, #FF512F 0%, #DD2476 100%); /* Red/Pink Gradient */
-            --grad-btn: linear-gradient(45deg, #4776E6 0%, #8E54E9 100%);   /* Blue/Purple Gradient */
+            --grad-header: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            --grad-skill: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            --grad-btn: linear-gradient(45deg, #1FA2FF 0%, #12D8FA 50%, #A6FFCB 100%);
         }
 
         body {
@@ -20,26 +18,27 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #f4f7f6;
+            background-color: #f0f2f5;
             line-height: 1.6;
         }
 
-        /* --- 1. GRADIENT HEADER --- */
+        /* --- HEADER --- */
         header {
-            background: var(--grad-header); /* Gradient Background */
+            background: var(--grad-header);
             color: var(--white);
             text-align: center;
-            padding: 4rem 1.5rem 6rem 1.5rem; /* Extra padding at bottom for overlap */
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Modern angled shape */
+            padding: 4rem 1.5rem 5rem;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
             margin-bottom: 1rem;
             background-color: #ddd;
         }
@@ -48,16 +47,15 @@
             margin: 10px 0 5px;
             font-size: 2.2rem;
             font-weight: 800;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .titles {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #dcdcdc;
             font-weight: 400;
         }
 
-        /* --- SOCIAL BUTTONS --- */
+        /* --- SOCIAL BAR --- */
         .social-bar {
             display: flex;
             flex-wrap: wrap;
@@ -69,25 +67,21 @@
         .social-btn {
             text-decoration: none;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            background: rgba(255,255,255,0.2); /* Glass effect */
+            background: rgba(255,255,255,0.15);
             border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(5px);
-            transition: transform 0.2s, background 0.2s;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .social-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,0.4);
-        }
-
-        /* --- LAYOUT --- */
         .container {
             max-width: 1000px;
-            margin: -50px auto 0;
+            margin: -40px auto 0;
             padding: 0 1.5rem 3rem;
             position: relative;
             z-index: 2;
@@ -98,89 +92,76 @@
             margin-bottom: 2rem;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
         h2 {
-            display: inline-block;
-            background: var(--grad-header);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; /* Text Gradient */
+            color: var(--primary);
+            border-left: 6px solid #11998e;
+            padding-left: 15px;
             margin-top: 0;
-            font-size: 1.8rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
         }
 
-        /* --- 2. SKILL SLIDERS (Gradient Bars) --- */
-        .skill-item {
-            margin-bottom: 15px;
+        /* --- EXPERIENCE --- */
+        .exp-item {
+            border-left: 3px solid #ddd;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            position: relative;
         }
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
+        .exp-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #11998e;
+            border-radius: 50%;
+            position: absolute;
+            left: -7.5px;
+            top: 5px;
         }
-        .progress-bg {
-            background: #eee;
-            height: 10px;
-            border-radius: 10px;
+        .role { font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
+        .company { color: #555; font-style: italic; font-size: 0.95rem; }
+        .date { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
+
+        /* --- AUTO-SCROLL CAROUSEL --- */
+        .slider-wrapper {
             overflow: hidden;
+            position: relative;
+            width: 100%;
         }
-        .progress-bar {
-            height: 100%;
-            border-radius: 10px;
-            background: var(--grad-skill); /* Gradient Fill */
-            width: 0%; /* Animated via CSS */
-            animation: fillBar 1.5s ease-out forwards;
-        }
-        @keyframes fillBar { from { width: 0; } }
 
-        /* --- 3. CERTIFICATE SLIDER (The Carousel) --- */
-        .slider-container {
+        .slider-track {
             display: flex;
-            overflow-x: auto; /* Enables scrolling left/right */
-            scroll-snap-type: x mandatory; /* Makes it snap to cards */
-            gap: 15px;
-            padding-bottom: 15px;
-            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+            width: calc(300px * 21); /* Adjust based on number of items */
+            animation: scroll 60s linear infinite; /* Adjust speed here */
         }
         
-        /* Hide scrollbar but keep functionality */
-        .slider-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .slider-container::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 10px;
-        }
-
         .slide-card {
-            flex: 0 0 85%; /* Shows 85% of card on mobile to encourage scrolling */
-            scroll-snap-align: center;
+            width: 280px;
+            flex-shrink: 0;
             background: #f8f9fa;
-            border: 1px solid #e1e4e8;
+            border: 1px solid #eee;
             border-radius: 12px;
             padding: 20px;
+            margin-right: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        
-        @media (min-width: 600px) {
-            .slide-card { flex: 0 0 45%; } /* Desktop: show 2 cards at once */
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-280px * 10)); } /* Moves halfway then loops */
         }
 
         .cert-btn {
             display: inline-block;
             margin-top: 10px;
             text-decoration: none;
-            color: white;
-            background: var(--grad-btn);
+            color: #333;
+            background: #e0e0e0;
             padding: 8px 15px;
             border-radius: 5px;
             font-size: 0.8rem;
@@ -188,36 +169,27 @@
             font-weight: bold;
         }
 
-        /* --- OTHER STYLES --- */
-        .pub-card {
-            border-left: 5px solid #26D0CE; /* Matches header */
-            background: #fafafa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
+        /* --- SKILLS GRID --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        
-        .timeline-item {
-            border-left: 3px solid #ddd;
-            padding-left: 20px;
-            margin-bottom: 25px;
-            position: relative;
-        }
-        .timeline-item::before {
-            content: '';
-            width: 14px;
-            height: 14px;
-            background: #26D0CE;
-            border-radius: 50%;
-            position: absolute;
-            left: -8.5px;
-            top: 5px;
+        .skill-pill {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
+        /* --- PUBLICATION --- */
         .doi-link {
-            color: #1A2980;
+            color: #0f2027;
             font-weight: bold;
-            text-decoration: none;
+            font-size: 0.9rem;
+            text-decoration: underline;
         }
 
         footer { text-align: center; padding: 2rem; color: #777; font-size: 0.9rem; }
@@ -228,163 +200,120 @@
     <header>
         <img src="1000215280.jpg" alt="Usman Nizam ul Din" class="profile-img">
         <h1>Usman Nizam ul Din</h1>
-        <div class="titles">Content Writer | Researcher | Marketer</div>
+        <div class="titles">Academic Content Writer | Researcher | Marketing Specialist</div>
         
         <div class="social-bar">
-            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn">ResearchGate</a>
-            <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230" class="social-btn">LinkedIn</a>
-            <a href="https://wa.me/923082194489" class="social-btn">WhatsApp</a>
+            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn" target="_blank">ResearchGate</a>
+            <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230" class="social-btn" target="_blank">LinkedIn</a>
+            <a href="https://wa.me/923082194489" class="social-btn" target="_blank">WhatsApp</a>
+            <a href="https://www.facebook.com/usman.dhuddi.71" class="social-btn" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/dhuddiofficial" class="social-btn" target="_blank">Instagram</a>
         </div>
-        <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
-            Bahawalnagar, Pakistan
-        </p>
+        <p style="margin-top: 15px; opacity: 0.9;">Bahawalnagar, Punjab, Pakistan</p>
     </header>
 
     <div class="container">
 
-        <section id="skills">
-            <h2>Skills Proficiency</h2>
+        <section id="experience">
+            <h2>Experience</h2>
             
-            <div class="skill-item">
-                <div class="skill-info"><span>Content Writing & SEO</span><span>95%</span></div>
-                <div class="progress-bg"><div class="progress-bar" style="width: 95%;"></div></div>
-            </div>
-            
-            <div class="skill-item">
-                <div class="skill-info"><span>Digital Marketing (Meta/Google)</span><span>90%</span></div>
-                <div class="progress-bg"><div class="progress-bar" style="width: 90%;"></div></div>
+            <div class="exp-item">
+                <span class="date">Present</span>
+                <div class="role">Freelance Academic Content Writer</div>
+                <div class="company">Self-Employed / Freelance</div>
+                <p>Specialized in academic thesis writing, research papers, and technical documentation. Proficient in formatting, citation styles, and structuring complex arguments.</p>
             </div>
 
-            <div class="skill-item">
-                <div class="skill-info"><span>Research & SPSS</span><span>85%</span></div>
-                <div class="progress-bg"><div class="progress-bar" style="width: 85%;"></div></div>
+            <div class="exp-item">
+                <span class="date">March 2025 - Sept 2025</span>
+                <div class="role">Customer Chat Support</div>
+                <div class="company">Mindbridge Private Limited</div>
+                <p>International campaign support, real-time client resolution, and CRM management.</p>
             </div>
 
-            <div class="skill-item">
-                <div class="skill-info"><span>Graphic Design (Canva/PS)</span><span>80%</span></div>
-                <div class="progress-bg"><div class="progress-bar" style="width: 80%;"></div></div>
-            </div>
-            
-             <div class="skill-item">
-                <div class="skill-info"><span>Prompt Engineering</span><span>85%</span></div>
-                <div class="progress-bg"><div class="progress-bar" style="width: 85%;"></div></div>
+            <div class="exp-item">
+                <span class="date">June 2023 - July 2023</span>
+                <div class="role">Sales & Marketing Intern</div>
+                <div class="company">Pak Suzuki Motors</div>
+                <p>Managed social media accounts, organized promotional events, and prepared sales reports.</p>
             </div>
         </section>
 
         <section id="publications">
             <h2>Publications</h2>
-            <div class="pub-card">
-                <h3 style="margin-top:0;">What Drives M-Banking Clients...?</h3>
-                <p><em>Journal of Asian Development Studies (2025)</em></p>
-                <a href="https://doi.org/10.62345/jads.2025.14.3.91" class="doi-link" target="_blank">🔗 View DOI: 10.62345/jads.2025.14.3.91</a>
+            <div style="margin-bottom: 20px;">
+                <div class="role">What Drives M-Banking Clients to Continue Using M-Banking Services?</div>
+                <div class="company">Journal of Asian Development Studies (2025)</div>
+                <a href="https://doi.org/10.62345/jads.2025.14.3.91" class="doi-link" target="_blank">DOI: 10.62345/jads.2025.14.3.91</a>
             </div>
-            <div class="pub-card">
-                <h3 style="margin-top:0;">The Role of Anthropomorphism in AI</h3>
-                <p><em>Pakistan Journal of Humanities and Social Sciences (2025)</em></p>
-                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" class="doi-link" target="_blank">🔗 View DOI: 10.52131/pjhss.2025.v13i2.2808</a>
+            <div>
+                <div class="role">The Role of Anthropomorphism in AI: ChatGPT’s Impact</div>
+                <div class="company">Pakistan Journal of Humanities and Social Sciences (2025)</div>
+                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" class="doi-link" target="_blank">DOI: 10.52131/pjhss.2025.v13i2.2808</a>
             </div>
         </section>
 
         <section id="certifications">
-            <h2>Certifications (Swipe ➡)</h2>
-            <p style="font-size:0.8rem; color:#666; margin-bottom:15px;">Swipe left to see all 21 certifications</p>
-            
-            <div class="slider-container">
-                <div class="slide-card">
-                    <div>
-                        <strong>Supply Chain Planning</strong><br>
-                        <small>UC Irvine</small>
+            <h2>Certifications (Auto-Scroll)</h2>
+            <div class="slider-wrapper">
+                <div class="slider-track">
+                    <div class="slide-card">
+                        <strong>Supply Chain Planning</strong><small>UC Irvine</small>
+                        <a href="https://coursera.org/verify/KVGJ1GWOKUMA" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/KVGJ1GWOKUMA" class="cert-btn" target="_blank">Verify</a>
-                </div>
-
-                <div class="slide-card">
-                    <div>
-                        <strong>Logistics Excellence</strong><br>
-                        <small>Rutgers University</small>
+                    <div class="slide-card">
+                        <strong>Logistics Excellence</strong><small>Rutgers University</small>
+                        <a href="https://coursera.org/verify/AZC8T74V77R4" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/AZC8T74V77R4" class="cert-btn" target="_blank">Verify</a>
-                </div>
-
-                <div class="slide-card">
-                    <div>
-                        <strong>Social Media Marketing</strong><br>
-                        <small>Meta</small>
+                    <div class="slide-card">
+                        <strong>Social Media Marketing</strong><small>Meta</small>
+                        <a href="https://coursera.org/verify/BSOAQWHITSXF" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/BSOAQWHITSXF" class="cert-btn" target="_blank">Verify</a>
-                </div>
-                
-                 <div class="slide-card">
-                    <div>
-                        <strong>Advertising with Meta</strong><br>
-                        <small>Meta</small>
+                    <div class="slide-card">
+                        <strong>Social Media Management</strong><small>Meta</small>
+                        <a href="https://coursera.org/verify/2W1TSZ4AHOJU" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/11KJ0N1X4WSS" class="cert-btn" target="_blank">Verify</a>
-                </div>
-
-                <div class="slide-card">
-                    <div>
-                        <strong>Google AI Essentials</strong><br>
-                        <small>Google</small>
+                    <div class="slide-card">
+                        <strong>Advertising with Meta</strong><small>Meta</small>
+                        <a href="https://coursera.org/verify/11KJ0N1X4WSS" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/OPARVPC9JGMG" class="cert-btn" target="_blank">Verify</a>
-                </div>
-                
-                <div class="slide-card">
-                    <div>
-                        <strong>Consumer Neuroscience</strong><br>
-                        <small>Copenhagen Business School</small>
+                    <div class="slide-card">
+                        <strong>Digital Marketing & E-com</strong><small>Google</small>
+                        <a href="https://coursera.org/verify/KIYJ16S0EX7V" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/G7C6NF4CH9ZA" class="cert-btn" target="_blank">Verify</a>
-                </div>
-                
-                 <div class="slide-card">
-                    <div>
-                        <strong>Marketing Analytics</strong><br>
-                        <small>University of Virginia</small>
+                    <div class="slide-card">
+                        <strong>Google AI Essentials</strong><small>Google</small>
+                        <a href="https://coursera.org/verify/OPARVPC9JGMG" class="cert-btn">Verify</a>
                     </div>
-                    <a href="https://coursera.org/verify/S2L39LKRAY8X" class="cert-btn" target="_blank">Verify</a>
-                </div>
-                
-                <div class="slide-card">
-                    <div>
-                        <strong>+ 14 More Courses</strong><br>
-                        <small>See CV for full list</small>
+                    <div class="slide-card">
+                        <strong>Marketing Analytics</strong><small>Univ. of Virginia</small>
+                        <a href="https://coursera.org/verify/S2L39LKRAY8X" class="cert-btn">Verify</a>
                     </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="timeline-item">
-                <strong>Customer Chat Support</strong><br>
-                <small>Mindbridge Pvt Ltd (2025)</small>
-                <p>Provided real-time international support and managed CRM data.</p>
-            </div>
-            <div class="timeline-item">
-                <strong>Sales & Marketing Intern</strong><br>
-                <small>Pak Suzuki Motors (2023)</small>
-                <p>Managed social media and assisted in sales operations.</p>
-            </div>
-        </section>
-        
-         <section id="Education">
-            <h2>Education</h2>
-            <div class="timeline-item">
-                <strong>BBA - Marketing</strong><br>
-                <small>The Islamia University of Bahawalpur (2020-2024)</small>
-                <p>CGPA 3.37/4.0</p>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Usman Nizam ul Din</p>
-    </footer>
-
-</body>
-                                             </html>
-                        
+                    <div class="slide-card">
+                        <strong>Consumer Neuroscience</strong><small>Copenhagen Business School</small>
+                        <a href="https://coursera.org/verify/G7C6NF4CH9ZA" class="cert-btn">Verify</a>
+                    </div>
+                    <div class="slide-card">
+                        <strong>Digiskills: Freelancing</strong><small>Digiskills.pk</small>
+                        <span class="cert-btn">Verifiable on Cert</span>
+                    </div>
+                    <div class="slide-card">
+                        <strong>Digiskills: SEO</strong><small>Digiskills.pk</small>
+                        <span class="cert-btn">Verifiable on Cert</span>
+                    </div>
+                    <div class="slide-card">
+                        <strong>Digiskills: WordPress</strong><small>Digiskills.pk</small>
+                        <span class="cert-btn">Verifiable on Cert</span>
+                    </div>
+                    <div class="slide-card">
+                        <strong>Digiskills: Digital Literacy</strong><small>Digiskills.pk</small>
+                        <span class="cert-btn">Verifiable on Cert</span>
+                    </div>
+                    <div class="slide-card">
+                        <strong>UI/UX Design</strong><small>My Great Learning</small>
+                        <span class="cert-btn">Verifiable on Cert</span>
+                    </div>
+                    <div class="slide-card">
+                        <strong>Attract Customers</strong><small>Google</small>
+                        <a href="
+    
