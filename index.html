@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usman Nizam Ul Din | Portfolio</title>
+    <title>Usman Nizam ul Din | Portfolio</title>
     <style>
         :root {
-            --primary-dark: #0f2027;
-            --accent-green: #38ef7d;
-            --grad-header: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            --grad-glow: linear-gradient(45deg, #11998e, #38ef7d);
-            --grad-btn: linear-gradient(45deg, #1FA2FF, #12D8FA);
+            --primary: #2c3e50;
+            --white: #ffffff;
+            /* Vibrant Gradients */
+            --grad-header: linear-gradient(135deg, #1A2980 0%, #26D0CE 100%); /* Blue to Teal */
+            --grad-title: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);   /* Green Gradient */
+            --grad-card: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            --grad-btn: linear-gradient(45deg, #4776E6 0%, #8E54E9 100%);     /* Purple/Blue */
         }
 
         body {
@@ -20,32 +22,15 @@
             color: #333;
             background-color: #f0f2f5;
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
-        /* --- HEADER & GRADIENT BAR --- */
+        /* --- HEADER --- */
         header {
             background: var(--grad-header);
-            color: white;
+            color: var(--white);
             text-align: center;
-            padding: 5rem 1.5rem 8rem;
-            position: relative;
-        }
-
-        /* The "Long Bar" behind the picture */
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 100px;
-            background: var(--grad-glow);
-            border-radius: 50px;
-            z-index: 1;
-            opacity: 0.3;
-            filter: blur(20px);
+            padding: 4rem 1.5rem 6rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
 
         .profile-img {
@@ -53,24 +38,23 @@
             height: 170px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            background-color: #ddd;
         }
 
-        .availability-badge {
-            background: #38ef7d;
-            color: #0f2027;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-            z-index: 2;
-            position: relative;
+        header h1 {
+            margin: 10px 0 5px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .titles {
+            font-size: 1.1rem;
+            color: #e0f7fa;
+            font-weight: 500;
         }
 
         /* --- SOCIAL BAR --- */
@@ -80,8 +64,6 @@
             justify-content: center;
             gap: 12px;
             margin-top: 25px;
-            position: relative;
-            z-index: 2;
         }
 
         .social-btn {
@@ -91,222 +73,163 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: bold;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
-            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s;
         }
+        .social-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.4); }
 
-        .social-btn:hover { background: var(--grad-glow); border-color: transparent; transform: translateY(-3px); }
-
-        /* --- CONTAINER --- */
+        /* --- LAYOUT --- */
         .container {
             max-width: 1000px;
             margin: -60px auto 0;
             padding: 0 1.5rem 3rem;
             position: relative;
-            z-index: 5;
+            z-index: 2;
         }
 
         section {
-            background: white;
+            background: var(--white);
             margin-bottom: 2rem;
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
         h2 {
-            color: var(--primary-dark);
-            border-left: 6px solid #11998e;
-            padding-left: 15px;
+            background: var(--grad-header);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-top: 0;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        /* --- SKILLS PILLS --- */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .skill-pill { background: #e3f2fd; color: #1565c0; padding: 8px 16px; border-radius: 25px; font-size: 0.9rem; font-weight: 600; }
+        /* --- ABOUT ME --- */
+        .about-text {
+            color: #555;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
 
-        /* --- ITEM BOXES --- */
-        .item-box { padding: 15px 0; border-bottom: 1px solid #eee; }
-        .item-box:last-child { border: none; }
-        .role-title { font-weight: bold; color: #2c3e50; font-size: 1.1rem; }
-        .sub-text { color: #666; font-style: italic; }
-        .date-tag { background: #e8fcf1; color: #11998e; padding: 2px 8px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        /* --- EXPERIENCE --- */
+        .exp-item {
+            border-left: 4px solid #26D0CE;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+            padding: 15px 15px 15px 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        .role { font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
+        .company { color: #11998e; font-style: italic; font-weight: 600; }
+        .date { font-size: 0.85rem; color: #888; display: block; margin-bottom: 5px; }
 
-        /* --- SLIDER (Manual & Auto) --- */
-        .slider-wrapper { overflow: hidden; position: relative; width: 100%; }
-        .slider-track { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; cursor: grab; }
-        .slider-track::-webkit-scrollbar { display: none; }
-        .auto-scroll { animation: scroll 60s linear infinite; }
-        
+        /* --- SLIDER (AUTO + MANUAL) --- */
+        .slider-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+            /* Hide scrollbar visually but allow function */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+        .slider-container::-webkit-scrollbar { 
+            display: none; 
+        }
+
         .slide-card {
-            min-width: 280px;
-            background: #f8f9fa;
-            border: 1px solid #eee;
+            display: inline-block;
+            width: 260px;
+            background: var(--grad-card);
+            border: 1px solid #e1e4e8;
             border-radius: 12px;
             padding: 20px;
-            flex-shrink: 0;
+            margin-right: 15px;
+            white-space: normal; /* Allow text wrapping inside card */
+            vertical-align: top;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: 160px; /* Fixed height for uniformity */
+            position: relative;
         }
 
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-2000px); }
+        .cert-btn {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            background: var(--grad-btn);
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
         }
 
-        /* --- CONTACT FORM --- */
-        .contact-form { display: grid; gap: 15px; margin-top: 20px; }
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit;
+        /* --- LISTS (Seminars & Honors) --- */
+        ul.custom-list {
+            list-style: none;
+            padding: 0;
         }
-        .submit-btn {
-            background: var(--grad-glow); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer;
+        ul.custom-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: #444;
+        }
+        ul.custom-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #26D0CE;
+            font-weight: bold;
         }
 
+        /* --- TESTIMONIALS --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .test-card {
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .test-name { font-weight: bold; color: #2c3e50; margin-top: 10px; }
+        .stars { color: #f1c40f; }
+
+        /* --- FOOTER --- */
         footer {
-            background: #0f2027; color: #888; text-align: center; padding: 3rem; border-top-left-radius: 40px; border-top-right-radius: 40px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
         }
+        footer a { color: #26D0CE; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="availability-badge">Available for Work</div>
-        <br>
-        <img src="1000215280.jpg" alt="Usman Nizam Ul Din" class="profile-img">
-        <h1 style="color: white; -webkit-text-fill-color: white;">Usman Nizam Ul Din</h1>
-        <div style="font-size: 1.1rem; opacity: 0.9;">Academic Content Writer | Researcher | Marketing Specialist</div>
+        <img src="1000215280.jpg" alt="Usman Nizam ul Din" class="profile-img">
+        <h1>Usman Nizam ul Din</h1>
+        <div class="titles">Academic Content Writer | Researcher | Marketing Specialist</div>
         
         <div class="social-bar">
-            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din" class="social-btn" target="_blank">ResearchGate</a>
+            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn" target="_blank">ResearchGate</a>
             <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230" class="social-btn" target="_blank">LinkedIn</a>
-            <a href="https://wa.me/923082194489" class="social-btn" target="_blank">WhatsApp</a>
-            <a href="https://www.facebook.com/usman.dhuddi.71" class="social-btn" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/dhuddiofficial" class="social-btn" target="_blank">Instagram</a>
-        </div>
-        <p style="margin-top: 15px; font-size: 0.9rem;">📍 Bahawalnagar, Punjab, Pakistan</p>
-    </header>
-
-    <div class="container">
-
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am <strong>Usman Nizam Ul Din</strong>, a professional researcher with a milestone of completing <strong>50+ academic thesis and research projects</strong>. I specialize in conducting deep surveys, market analysis, and academic writing that meets international standards.</p>
-        </section>
-
-        <section id="skills">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-container">
-                <span class="skill-pill">Academic Writing</span>
-                <span class="skill-pill">Research Methodology</span>
-                <span class="skill-pill">Data Analysis</span>
-                <span class="skill-pill">SEO</span>
-                <span class="skill-pill">WordPress</span>
-                <span class="skill-pill">Social Media Marketing</span>
-                <span class="skill-pill">Graphic Design</span>
-                <span class="skill-pill">UI/UX Design</span>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            <div class="item-box">
-                <span class="date-tag">Present</span>
-                <div class="role-title">Freelance Academic Content Writer</div>
-                <p>Specialized in 50+ academic thesis projects, research papers, and technical documentation with complex formatting and citation styles.</p>
-            </div>
-            <div class="item-box">
-                <span class="date-tag">Mar 2025 - Sept 2025</span>
-                <div class="role-title">Customer Chat Support</div>
-                <div class="sub-text">Mindbridge Private Limited</div>
-            </div>
-            <div class="item-box">
-                <span class="date-tag">June 2023 - July 2023</span>
-                <div class="role-title">Sales & Marketing Intern</div>
-                <div class="sub-text">Pak Suzuki Motors</div>
-            </div>
-        </section>
-
-        <section id="publications">
-            <h2>Publications</h2>
-            <div class="item-box">
-                <div class="role-title">What Drives M-Banking Clients to Continue Using M-Banking Services?</div>
-                <div class="sub-text">Journal of Asian Development Studies (2025)</div>
-                <a href="https://doi.org/10.62345/jads.2025.14.3.91" target="_blank" style="color:#11998e;">DOI: 10.62345/jads.2025.14.3.91</a>
-            </div>
-            <div class="item-box">
-                <div class="role-title">The Role of Anthropomorphism in AI: ChatGPT’s Impact</div>
-                <div class="sub-text">Pakistan Journal of Humanities and Social Sciences (2025)</div>
-                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" target="_blank" style="color:#11998e;">DOI: 10.52131/pjhss.2025.v13i2.2808</a>
-            </div>
-        </section>
-
-        <section id="honors">
-            <h2>Honors & Activities</h2>
-            <div class="item-box">● <strong>Graphic Designer</strong>: Raghib Al Hidaya Welfare Society (Jan 2024 - Present)</div>
-            <div class="item-box">● <strong>Vice President</strong>: Zad E Rah Foundation (Oct 2024 - Present)</div>
-            <div class="item-box">● Organized marketing events and seminars to enhance leadership and project management.</div>
-        </section>
-
-        <section id="development">
-            <h2>Seminars & Training</h2>
-            <div class="item-box">● <strong>Marketing Mix</strong> | IUB Bahawalnagar | 4 March 2024</div>
-            <div class="item-box">● <strong>Administrative Management</strong> | IUB Bahawalnagar | 1 Nov 2024</div>
-            <div class="item-box">● <strong>Sustainable Innovations Summit</strong> | IUB Bahawalnagar | 25 Feb 2023</div>
-            <div class="item-box">● <strong>SMEDA Financial Strategies</strong> | IUB Bahawalnagar | 18 April 2022</div>
-        </section>
-
-        <section id="certifications">
-            <h2>Certifications (Auto & Manual Scroll)</h2>
-            <div class="slider-wrapper" onmouseover="pauseScroll()" onmouseout="resumeScroll()">
-                <div class="slider-track auto-scroll" id="cert-track">
-                    <div class="slide-card"><strong>Supply Chain Planning</strong><br>UC Irvine</div>
-                    <div class="slide-card"><strong>Social Media Marketing</strong><br>Meta</div>
-                    <div class="slide-card"><strong>Digital Marketing</strong><br>Google</div>
-                    <div class="slide-card"><strong>SEO</strong><br>Digiskills.pk</div>
-                    <div class="slide-card"><strong>UI/UX Design</strong><br>Great Learning</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <h2>Client Testimonials</h2>
-            <div class="item-box">
-                <em>"Usman's research methodology is exceptional. He delivered a high-quality thesis that exceeded expectations."</em>
-                <br><strong>— Academic Client</strong>
-            </div>
-            <div class="item-box">
-                <em>"Professional and efficient. His marketing insights helped our event gain significant traction."</em>
-                <br><strong>— Marketing Partner</strong>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Hire Me</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="4" placeholder="How can I help you with your project?" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </section>
-
-    </div>
-
-    <footer>
-        <h3>Usman Nizam Ul Din</h3>
-        <p>Academic Researcher | Marketing Specialist</p>
-        <div style="margin: 15px 0;">
-            <a href="https://wa.me/923082194489" style="color:#38ef7d; text-decoration:none;">WhatsApp: +92 308 2194489</a>
-        </div>
-        <p>&copy; 2026 Usman Nizam Ul Din | All Rights Reserved</p>
-    </footer>
-
-    <script>
-        const track = document.getElementById('cert-track');
-        function pauseScroll() { track.classList.remove('auto-scroll'); }
-        function resumeScroll() { track.classList.add('auto-scroll'); }
-    </script>
-</body>
-</html>
+            <a href="https://wa.me/923082194489" class="social-btn" target="_blank">WhatsApp
+                
