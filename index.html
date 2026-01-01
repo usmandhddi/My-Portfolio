@@ -7,16 +7,12 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --accent: #e74c3c; /* Vibrant Red/Orange for highlights */
-            --link-blue: #3498db;
-            --whatsapp: #25D366;
-            --linkedin: #0077b5;
-            --researchgate: #00ccbb;
-            --facebook: #1877F2;
-            --instagram: #d62976;
-            --bg-light: #f0f2f5;
             --white: #ffffff;
-            --card-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            /* New Gradient Variables */
+            --grad-header: linear-gradient(135deg, #1A2980 0%, #26D0CE 100%);
+            --grad-card: linear-gradient(to right, #ffffff, #f9f9f9);
+            --grad-skill: linear-gradient(90deg, #FF512F 0%, #DD2476 100%); /* Red/Pink Gradient */
+            --grad-btn: linear-gradient(45deg, #4776E6 0%, #8E54E9 100%);   /* Blue/Purple Gradient */
         }
 
         body {
@@ -24,18 +20,17 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: var(--bg-light);
+            background-color: #f4f7f6;
             line-height: 1.6;
         }
 
-        /* Hero Header */
+        /* --- 1. GRADIENT HEADER --- */
         header {
-            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            background: var(--grad-header); /* Gradient Background */
             color: var(--white);
             text-align: center;
-            padding: 3rem 1rem;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
+            padding: 4rem 1.5rem 6rem 1.5rem; /* Extra padding at bottom for overlap */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Modern angled shape */
         }
 
         .profile-img {
@@ -43,177 +38,165 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             margin-bottom: 1rem;
             background-color: #ddd;
         }
 
         header h1 {
             margin: 10px 0 5px;
-            font-size: 2.4rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .titles {
-            font-size: 1.2rem;
-            color: #ecf0f1;
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
         }
 
-        /* Social Media Buttons (Eye-Catching) */
+        /* --- SOCIAL BUTTONS --- */
         .social-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .social-btn {
             text-decoration: none;
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: transform 0.2s;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.2); /* Glass effect */
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .social-btn:hover { transform: translateY(-3px); }
-        .btn-rg { background-color: var(--researchgate); }
-        .btn-li { background-color: var(--linkedin); }
-        .btn-wa { background-color: var(--whatsapp); }
-        .btn-fb { background-color: var(--facebook); }
-        .btn-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.4);
+        }
 
-        /* Container */
+        /* --- LAYOUT --- */
         .container {
             max-width: 1000px;
-            margin: -30px auto 0; /* Overlap header */
+            margin: -50px auto 0;
             padding: 0 1.5rem 3rem;
             position: relative;
+            z-index: 2;
         }
 
         section {
             background: var(--white);
             margin-bottom: 2rem;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         h2 {
-            color: var(--primary);
-            border-left: 5px solid var(--accent);
-            padding-left: 15px;
-            margin-top: 0;
-            font-size: 1.6rem;
-        }
-
-        /* Skills with Illustrations */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-tag {
-            background-color: #fff;
-            color: var(--primary);
-            padding: 10px 18px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: 1px solid #e1e4e8;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Publications */
-        .pub-card {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            transition: border-color 0.3s;
-        }
-        .pub-card:hover { border-color: var(--accent); }
-        
-        .pub-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        
-        .pub-meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .doi-link {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            margin-top: 5px;
+            background: var(--grad-header);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Text Gradient */
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        /* Certificate List */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        /* --- 2. SKILL SLIDERS (Gradient Bars) --- */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .progress-bg {
+            background: #eee;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: var(--grad-skill); /* Gradient Fill */
+            width: 0%; /* Animated via CSS */
+            animation: fillBar 1.5s ease-out forwards;
+        }
+        @keyframes fillBar { from { width: 0; } }
+
+        /* --- 3. CERTIFICATE SLIDER (The Carousel) --- */
+        .slider-container {
+            display: flex;
+            overflow-x: auto; /* Enables scrolling left/right */
+            scroll-snap-type: x mandatory; /* Makes it snap to cards */
             gap: 15px;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .slider-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
         }
 
-        .cert-item {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
+        .slide-card {
+            flex: 0 0 85%; /* Shows 85% of card on mobile to encourage scrolling */
+            scroll-snap-align: center;
+            background: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-
-        .cert-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+        
+        @media (min-width: 600px) {
+            .slide-card { flex: 0 0 45%; } /* Desktop: show 2 cards at once */
         }
 
-        .cert-provider {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
-        .verify-link {
+        .cert-btn {
+            display: inline-block;
+            margin-top: 10px;
             text-decoration: none;
-            color: var(--link-blue);
-            font-size: 0.85rem;
+            color: white;
+            background: var(--grad-btn);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            text-align: center;
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        }
+
+        /* --- OTHER STYLES --- */
+        .pub-card {
+            border-left: 5px solid #26D0CE; /* Matches header */
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
         
-        .verify-link:hover { text-decoration: underline; }
-
-        /* Experience & Education Styles */
         .timeline-item {
             border-left: 3px solid #ddd;
             padding-left: 20px;
@@ -222,32 +205,22 @@
         }
         .timeline-item::before {
             content: '';
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
+            width: 14px;
+            height: 14px;
+            background: #26D0CE;
             border-radius: 50%;
             position: absolute;
-            left: -7.5px;
+            left: -8.5px;
             top: 5px;
         }
-        .time-role { font-weight: bold; font-size: 1.1rem; }
-        .time-place { color: #555; font-style: italic; }
-        .time-date { font-size: 0.85rem; color: #888; margin-bottom: 5px; display: block;}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            font-size: 0.9rem;
+        .doi-link {
+            color: #1A2980;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        @media (max-width: 600px) {
-            header { padding: 2rem 1rem; }
-            header h1 { font-size: 1.8rem; }
-            .container { padding: 0 1rem 2rem; }
-            .cert-grid { grid-template-columns: 1fr; }
-        }
+        footer { text-align: center; padding: 2rem; color: #777; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -255,237 +228,163 @@
     <header>
         <img src="1000215280.jpg" alt="Usman Nizam ul Din" class="profile-img">
         <h1>Usman Nizam ul Din</h1>
-        <div class="titles">Content Writer | Published Researcher | Marketing Specialist</div>
+        <div class="titles">Content Writer | Researcher | Marketer</div>
         
         <div class="social-bar">
-            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn btn-rg" target="_blank">ResearchGate</a>
-            <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-btn btn-li" target="_blank">LinkedIn</a>
-            <a href="https://wa.me/923082194489" class="social-btn btn-wa" target="_blank">WhatsApp</a>
-            <a href="https://www.facebook.com/usman.dhuddi.71?mibextid=ZbWKwL" class="social-btn btn-fb" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/dhuddiofficial" class="social-btn btn-ig" target="_blank">Instagram</a>
+            <a href="https://www.researchgate.net/profile/Usman-Nizam-Ul-Din?ev=hdr_xprf" class="social-btn">ResearchGate</a>
+            <a href="https://www.linkedin.com/in/usman-nizam-ul-din-b850a7230" class="social-btn">LinkedIn</a>
+            <a href="https://wa.me/923082194489" class="social-btn">WhatsApp</a>
         </div>
-        
         <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
-            📧 usmannizamuldin@gmail.com | 📞 03082194489
+            Bahawalnagar, Pakistan
         </p>
     </header>
 
     <div class="container">
 
         <section id="skills">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">✍️ Content Writing</span>
-                <span class="skill-tag">📢 Email Marketing</span>
-                <span class="skill-tag">📝 Guest Posting</span>
-                <span class="skill-tag">🌐 SEO (Search Engine Optimization)</span>
-                <span class="skill-tag">📰 Blog Posting</span>
-                
-                <span class="skill-tag">🤖 Prompt Engineering</span>
-                <span class="skill-tag">📊 SPSS (Data Analysis)</span>
-                <span class="skill-tag">💻 Web Design (WordPress)</span>
-                <span class="skill-tag">🛒 POS Systems</span>
-                
-                <span class="skill-tag">🎨 Graphic Design (Canva/PS)</span>
-                <span class="skill-tag">🎬 Video Editing (Capcut/Filmora)</span>
-                <span class="skill-tag">📐 UI/UX (Adobe XD)</span>
-                
-                <span class="skill-tag">🗣️ English</span>
-                <span class="skill-tag">🗣️ Urdu</span>
-                <span class="skill-tag">🗣️ Punjabi</span>
+            <h2>Skills Proficiency</h2>
+            
+            <div class="skill-item">
+                <div class="skill-info"><span>Content Writing & SEO</span><span>95%</span></div>
+                <div class="progress-bg"><div class="progress-bar" style="width: 95%;"></div></div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-info"><span>Digital Marketing (Meta/Google)</span><span>90%</span></div>
+                <div class="progress-bg"><div class="progress-bar" style="width: 90%;"></div></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info"><span>Research & SPSS</span><span>85%</span></div>
+                <div class="progress-bg"><div class="progress-bar" style="width: 85%;"></div></div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-info"><span>Graphic Design (Canva/PS)</span><span>80%</span></div>
+                <div class="progress-bg"><div class="progress-bar" style="width: 80%;"></div></div>
+            </div>
+            
+             <div class="skill-item">
+                <div class="skill-info"><span>Prompt Engineering</span><span>85%</span></div>
+                <div class="progress-bg"><div class="progress-bar" style="width: 85%;"></div></div>
             </div>
         </section>
 
         <section id="publications">
             <h2>Publications</h2>
-            
             <div class="pub-card">
-                <div class="pub-title">What Drives M-Banking Clients to Continue Using M-Banking Services in Pakistan?</div>
-                <div class="pub-meta">Journal of Asian Development Studies (2025) | Vol 14, Issue 3</div>
-                <a href="https://doi.org/10.62345/jads.2025.14.3.91" class="doi-link" target="_blank">
-                    🔗 Read Paper (DOI: 10.62345/jads.2025.14.3.91)
-                </a>
+                <h3 style="margin-top:0;">What Drives M-Banking Clients...?</h3>
+                <p><em>Journal of Asian Development Studies (2025)</em></p>
+                <a href="https://doi.org/10.62345/jads.2025.14.3.91" class="doi-link" target="_blank">🔗 View DOI: 10.62345/jads.2025.14.3.91</a>
             </div>
-
             <div class="pub-card">
-                <div class="pub-title">The Role of Anthropomorphism in AI: ChatGPT’s Impact on Travel Services Using the SOR Model</div>
-                <div class="pub-meta">Pakistan Journal of Humanities and Social Sciences (May 2025)</div>
-                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" class="doi-link" target="_blank">
-                    🔗 Read Paper (DOI: 10.52131/pjhss.2025.v13i2.2808)
-                </a>
+                <h3 style="margin-top:0;">The Role of Anthropomorphism in AI</h3>
+                <p><em>Pakistan Journal of Humanities and Social Sciences (2025)</em></p>
+                <a href="https://doi.org/10.52131/pjhss.2025.v13i2.2808" class="doi-link" target="_blank">🔗 View DOI: 10.52131/pjhss.2025.v13i2.2808</a>
             </div>
         </section>
 
         <section id="certifications">
-            <h2>Certifications & Courses</h2>
-            <div class="cert-grid">
+            <h2>Certifications (Swipe ➡)</h2>
+            <p style="font-size:0.8rem; color:#666; margin-bottom:15px;">Swipe left to see all 21 certifications</p>
+            
+            <div class="slider-container">
+                <div class="slide-card">
+                    <div>
+                        <strong>Supply Chain Planning</strong><br>
+                        <small>UC Irvine</small>
+                    </div>
+                    <a href="https://coursera.org/verify/KVGJ1GWOKUMA" class="cert-btn" target="_blank">Verify</a>
+                </div>
+
+                <div class="slide-card">
+                    <div>
+                        <strong>Logistics Excellence</strong><br>
+                        <small>Rutgers University</small>
+                    </div>
+                    <a href="https://coursera.org/verify/AZC8T74V77R4" class="cert-btn" target="_blank">Verify</a>
+                </div>
+
+                <div class="slide-card">
+                    <div>
+                        <strong>Social Media Marketing</strong><br>
+                        <small>Meta</small>
+                    </div>
+                    <a href="https://coursera.org/verify/BSOAQWHITSXF" class="cert-btn" target="_blank">Verify</a>
+                </div>
                 
-                <div class="cert-item">
+                 <div class="slide-card">
                     <div>
-                        <div class="cert-name">Supply Chain Planning</div>
-                        <div class="cert-provider">University of California, Irvine</div>
+                        <strong>Advertising with Meta</strong><br>
+                        <small>Meta</small>
                     </div>
-                    <a href="https://coursera.org/verify/KVGJ1GWOKUMA" class="verify-link" target="_blank">✅ Verify Certificate</a>
+                    <a href="https://coursera.org/verify/11KJ0N1X4WSS" class="cert-btn" target="_blank">Verify</a>
                 </div>
 
-                <div class="cert-item">
+                <div class="slide-card">
                     <div>
-                        <div class="cert-name">Logistics Excellence</div>
-                        <div class="cert-provider">Rutgers University</div>
+                        <strong>Google AI Essentials</strong><br>
+                        <small>Google</small>
                     </div>
-                    <a href="https://coursera.org/verify/AZC8T74V77R4" class="verify-link" target="_blank">✅ Verify Certificate</a>
+                    <a href="https://coursera.org/verify/OPARVPC9JGMG" class="cert-btn" target="_blank">Verify</a>
                 </div>
-
-                <div class="cert-item">
+                
+                <div class="slide-card">
                     <div>
-                        <div class="cert-name">Intro to Social Media Marketing</div>
-                        <div class="cert-provider">Meta</div>
+                        <strong>Consumer Neuroscience</strong><br>
+                        <small>Copenhagen Business School</small>
                     </div>
-                    <a href="https://coursera.org/verify/BSOAQWHITSXF" class="verify-link" target="_blank">✅ Verify Certificate</a>
+                    <a href="https://coursera.org/verify/G7C6NF4CH9ZA" class="cert-btn" target="_blank">Verify</a>
                 </div>
-
-                <div class="cert-item">
+                
+                 <div class="slide-card">
                     <div>
-                        <div class="cert-name">Social Media Management</div>
-                        <div class="cert-provider">Meta</div>
+                        <strong>Marketing Analytics</strong><br>
+                        <small>University of Virginia</small>
                     </div>
-                    <a href="https://coursera.org/verify/2W1TSZ4AHOJU" class="verify-link" target="_blank">✅ Verify Certificate</a>
+                    <a href="https://coursera.org/verify/S2L39LKRAY8X" class="cert-btn" target="_blank">Verify</a>
                 </div>
-
-                <div class="cert-item">
+                
+                <div class="slide-card">
                     <div>
-                        <div class="cert-name">Social Media Advertising</div>
-                        <div class="cert-provider">Meta</div>
+                        <strong>+ 14 More Courses</strong><br>
+                        <small>See CV for full list</small>
                     </div>
-                    <a href="https://coursera.org/verify/4OZMWBDFNVR3" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Advertising with Meta</div>
-                        <div class="cert-provider">Meta</div>
-                    </div>
-                    <a href="https://coursera.org/verify/11KJ0N1X4WSS" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Digital Marketing & E-commerce</div>
-                        <div class="cert-provider">Google</div>
-                    </div>
-                    <a href="https://coursera.org/verify/KIYJ16S0EX7V" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Google AI Essentials</div>
-                        <div class="cert-provider">Google</div>
-                    </div>
-                    <a href="https://coursera.org/verify/OPARVPC9JGMG" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Attract and Engage Customers</div>
-                        <div class="cert-provider">Google</div>
-                    </div>
-                    <a href="https://coursera.org/verify/4C7VHR17PHJ3" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Marketing Analytics</div>
-                        <div class="cert-provider">University of Virginia</div>
-                    </div>
-                    <a href="https://coursera.org/verify/S2L39LKRAY8X" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Consumer Neuroscience</div>
-                        <div class="cert-provider">Copenhagen Business School</div>
-                    </div>
-                    <a href="https://coursera.org/verify/G7C6NF4CH9ZA" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Marketing Strategy Positioning</div>
-                        <div class="cert-provider">IE Business School</div>
-                    </div>
-                    <a href="https://coursera.org/verify/JVL5E50J56Y1" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Canva for Social Media</div>
-                        <div class="cert-provider">Coursera Project Network</div>
-                    </div>
-                    <a href="https://coursera.org/verify/P5MU1465EEE7" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Small Business Marketing (YouTube)</div>
-                        <div class="cert-provider">Coursera Project Network</div>
-                    </div>
-                    <a href="https://coursera.org/verify/SZ1VMOON3QPS" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-name">Product-Market Fit Canvas</div>
-                        <div class="cert-provider">Coursera Project Network</div>
-                    </div>
-                    <a href="https://coursera.org/verify/WYKDKOA5PUQM" class="verify-link" target="_blank">✅ Verify Certificate</a>
-                </div>
-
-                <div class="cert-item">
-                    <div><div class="cert-name">Digital Literacy</div><div class="cert-provider">Digiskills pk</div></div>
-                </div>
-                <div class="cert-item">
-                    <div><div class="cert-name">SEO & Freelancing</div><div class="cert-provider">Digiskills pk</div></div>
-                </div>
-                 <div class="cert-item">
-                    <div><div class="cert-name">UI/UX</div><div class="cert-provider">My Great Learning</div></div>
                 </div>
 
             </div>
         </section>
 
         <section id="experience">
-            <h2>Work Experience</h2>
-            
+            <h2>Experience</h2>
             <div class="timeline-item">
-                <span class="time-date">March 2025 - Sept 2025</span>
-                <div class="time-role">Customer Chat Support - International</div>
-                <div class="time-place">Mindbridge Private Limited</div>
-                <p>Offered real-time customer service to international clients via live chat, logging interactions in CRM systems and meeting SLAs.</p>
+                <strong>Customer Chat Support</strong><br>
+                <small>Mindbridge Pvt Ltd (2025)</small>
+                <p>Provided real-time international support and managed CRM data.</p>
             </div>
-
             <div class="timeline-item">
-                <span class="time-date">June 2023 - July 2023</span>
-                <div class="time-role">Intern - Sales and Marketing</div>
-                <div class="time-place">Pak Suzuki Motors Company Limited</div>
-                <p>Assisted in sales reports, daily operations, and customer support. Managed social media accounts to improve customer care services.</p>
+                <strong>Sales & Marketing Intern</strong><br>
+                <small>Pak Suzuki Motors (2023)</small>
+                <p>Managed social media and assisted in sales operations.</p>
             </div>
         </section>
-
-        <section id="education">
+        
+         <section id="Education">
             <h2>Education</h2>
             <div class="timeline-item">
-                <span class="time-date">2020 - 2024</span>
-                <div class="time-role">Bachelor of Business Administration (BBA)</div>
-                <div class="time-place">The Islamia University of Bahawalpur</div>
-                <p><strong>CGPA:</strong> 3.37 / 4.0 | <strong>Major:</strong> Marketing</p>
+                <strong>BBA - Marketing</strong><br>
+                <small>The Islamia University of Bahawalpur (2020-2024)</small>
+                <p>CGPA 3.37/4.0</p>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Usman Nizam ul Din. All Rights Reserved.</p>
+        <p>&copy; 2026 Usman Nizam ul Din</p>
     </footer>
 
 </body>
-</html>
+                                             </html>
+                        
